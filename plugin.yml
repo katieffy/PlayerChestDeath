@@ -1,0 +1,3 @@
+name: PlayerChestDeath
+main: com.wesnc.playerchestdeath.ChestDeath
+version: 0.2
