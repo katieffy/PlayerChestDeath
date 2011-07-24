@@ -28,7 +28,9 @@ public class ChestDeath extends JavaPlugin
 	
 	public String configFileHeader = 
 		"Edit this file as needed.\n" +
-		"Death Message must be true for the death message String to work!";
+		"Death Message must be true for the death message String to work!" +
+		"Beacon Height are only 10 for now, until I figure out a better way of doing it" +
+		"ChestDeleteInterval is in seconds.";
 	
 	public boolean drops;
 	public boolean deathMessage;
@@ -38,6 +40,8 @@ public class ChestDeath extends JavaPlugin
 	public boolean SignLockette_PrivateDefault;
 	public boolean Sign_BeaconEnabled;
 	public int Sign_BeaconHeight;
+	public int ChestDeleteInterval;
+	public boolean ChestDeleteIntervalEnabled;
 	
 	@Override
 	public void onDisable()
@@ -70,6 +74,8 @@ public class ChestDeath extends JavaPlugin
 				prop.put("SignLockettePrivateDefault", "true");
 				prop.put("Sign_BeaconEnabled", "true");
 				prop.put("Sign_BeaconHeight", "10");
+				prop.put("ChestDeleteIntervalEnabled", "true");
+				prop.put("ChestDeleteInterval", "80");
 				prop.store(out, configFileHeader);
 				out.flush();
 				out.close();
@@ -97,6 +103,8 @@ public class ChestDeath extends JavaPlugin
 			SignLockette_PrivateDefault = Boolean.parseBoolean(prop.getProperty("SignLockettePrivateDefault"));
 			Sign_BeaconEnabled = Boolean.parseBoolean(prop.getProperty("Sign_BeaconEnabled"));
 			Sign_BeaconHeight = Integer.parseInt(prop.getProperty("Sign_BeaconHeight"));
+			ChestDeleteInterval = Integer.parseInt(prop.getProperty("ChestDeleteInterval"));
+			ChestDeleteIntervalEnabled = Boolean.parseBoolean(prop.getProperty("ChestDeleteIntervalEnabled"));
 		}
 		catch(IOException ex) { }
 		
